@@ -713,3 +713,90 @@ nav a:hover::after{
     flex-direction:column-reverse;   /* sur mobile : texte d'abord, image en dessous (plus naturel à lire) */
   }
 }
+
+/* pourquoi */
+.why-section{
+  background:#eeeae0;         /* gris clair légèrement teinté washi, comme ta référence */
+  padding:90px 40px;
+}
+
+.why-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.why-header h2{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:clamp(32px, 5vw, 48px);
+  text-transform:uppercase;
+}
+
+.why-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+
+.why-card{
+  background:#ffffff;
+  border-radius:14px;
+  padding:32px 26px;
+  text-align:center;
+  box-shadow:0 2px 10px rgba(11,11,13,0.06);
+  transition:transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.why-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 14px 28px rgba(200,16,46,0.15);
+}
+
+.why-title{
+  color:#0b0b0d;
+  font-size:15px;
+  font-weight:600;
+  line-height:1.5;
+  margin-bottom:24px;
+  min-height:48px;              /* pour que les cartes restent alignées même si les titres font 1 ou 2 lignes */
+}
+
+.why-icon-wrap{
+  width:60px;
+  height:60px;
+  background:#c8102e;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#f7f3ea;
+  margin:0 auto 18px;
+  transition:transform 0.4s ease, background 0.4s ease;
+}
+
+.why-card:hover .why-icon-wrap{
+  transform:rotate(360deg) scale(1.1);   /* petite rotation ludique au survol, cohérent avec le côté "fun" du site */
+  background:#0b0b0d;
+}
+
+.why-label{
+  color:#0b0b0d;
+  font-weight:700;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+
+@media(max-width:800px){
+  .why-grid{
+    grid-template-columns:repeat(2, 1fr);   /* 2 par ligne sur tablette/mobile plutôt que 3 qui serait trop serré */
+  }
+}
+
+@media(max-width:520px){
+  .why-grid{
+    grid-template-columns:1fr;              /* 1 par ligne sur petit mobile */
+  }
+}
