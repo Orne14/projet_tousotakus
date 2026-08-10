@@ -800,3 +800,93 @@ nav a:hover::after{
     grid-template-columns:1fr;              /* 1 par ligne sur petit mobile */
   }
 }
+
+/* faq */
+.faq-section{
+  background:#f7f3ea;
+  padding:90px 40px;
+}
+
+.faq-header{
+  text-align:center;
+  margin-bottom:44px;
+}
+
+.faq-header h2{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:clamp(32px, 5vw, 48px);
+  text-transform:uppercase;
+}
+
+.faq-list{
+  max-width:760px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.faq-item{
+  background:#ffffff;
+  border:2px solid transparent;
+  border-radius:14px;
+  overflow:hidden;
+  transition:border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item.active{
+  border-color:#c8102e;                        /* la carte ouverte se distingue par une bordure rouge */
+  box-shadow:0 8px 20px rgba(200,16,46,0.12);
+}
+
+.faq-question{
+  width:100%;
+  background:none;
+  border:none;
+  text-align:left;
+  padding:22px 26px;
+  font-size:16px;
+  font-weight:700;
+  color:#0b0b0d;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  transition:color 0.3s ease;
+}
+
+.faq-item.active .faq-question{
+  color:#c8102e;                                /* la question ouverte passe en rouge */
+}
+
+.faq-chevron{
+  flex-shrink:0;
+  display:flex;
+  color:#0b0b0d;
+  transition:transform 0.35s ease, color 0.35s ease;
+}
+
+.faq-item.active .faq-chevron{
+  transform:rotate(180deg);                     /* la flèche se retourne, comme dans ta référence */
+  color:#c8102e;
+}
+
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.4s ease;
+  padding:0 26px;
+}
+
+.faq-item.active .faq-answer{
+  max-height:200px;                             /* assez grand pour contenir le texte, c'est ce qui anime l'ouverture */
+  padding:0 26px 22px;
+}
+
+.faq-answer p{
+  color:#5a564c;
+  font-size:14px;
+  line-height:1.7;
+}

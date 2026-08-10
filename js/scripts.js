@@ -23,3 +23,17 @@ function nextSlide(){
 }
 
 setInterval(nextSlide, 5000);
+
+/* faq */
+function toggleFaq(button){
+  const item = button.closest('.faq-item');
+  const wasActive = item.classList.contains('active');
+
+  // ferme toutes les autres questions ouvertes
+  document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+
+  // si celle cliquée n'était pas déjà ouverte, on l'ouvre
+  if(!wasActive){
+    item.classList.add('active');
+  }
+}
