@@ -1,0 +1,107 @@
+
+.nav-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 30px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo-img{
+  width:44px;
+  height:44px;
+  border-radius:8px;
+  object-fit:cover;
+}
+.logo-text{
+  font-weight:700;
+  font-size:18px;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:36px;
+}
+
+/* --- l'effet que tu veux --- */
+nav a{
+  position:relative;
+  color:#0b0b0d;         /* couleur normale du texte */
+  text-decoration:none;
+  padding-bottom:4px;
+  transition:color 0.25s ease;   /* pour que le changement de couleur soit fluide aussi */
+}
+
+nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  height:2px;
+  width:0;                       /* trait invisible au départ */
+  background:#c8102e;            /* rouge */
+  transition:width 0.25s ease;   /* c'est CETTE ligne qui fait "pousser" le trait */
+}
+
+nav a:hover{
+  color:#c8102e;                 /* le texte devient rouge au survol */
+}
+
+nav a:hover::after{
+  width:100%;                    /* le trait prend toute la largeur au survol */
+}
+
+.nav-actions{
+  display:flex;
+  align-items:center;
+  gap:16px;         /* espace entre le panier et le bouton CTA */
+}
+
+.cart-btn{
+  position:relative;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  color:#0b0b0d;              /* couleur de l'icône = couleur du texte normal */
+  display:flex;
+  align-items:center;
+  transition:color 0.25s ease;
+}
+.cart-btn:hover{
+  color:#c8102e;               /* même logique que le menu : rouge au survol */
+}
+
+.cart-count{
+  position:absolute;
+  top:-4px;
+  right:-4px;
+  background:#c8102e;      /* rouge, pour que le compteur ressorte bien */
+  color:#f7f3ea;
+  font-size:11px;
+  font-weight:700;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cta-btn{
+  background:#0b0b0d;
+  color:#f7f3ea;
+  padding:12px 24px;
+  border-radius:30px;            /* pour la forme "pilule" comme ta référence */
+  text-decoration:none;
+  font-weight:600;
+  transition:background 0.25s ease;
+}
+.cta-btn:hover{
+  background:#c8102e;
+}
