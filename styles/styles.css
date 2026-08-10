@@ -455,3 +455,179 @@ nav a:hover::after{
     flex-direction:column;      /* passe en colonne (photo au-dessus, texte en dessous) sur mobile */
   }
 }
+
+
+
+/* packs cadeaux */
+.packs-section{
+    background:radial-gradient(circle at 25% 15%, #1c0a0d 0%, #0b0b0d 55%);
+    padding:90px 0;
+    overflow:hidden;             /* indispensable pour cacher le débordement du défilement */
+    /* border-top:1px solid rgba(200,16,46,0.35); */
+}
+
+.packs-header{
+  text-align:center;
+  margin-bottom:50px;
+  padding:0 40px;
+}
+
+.packs-tag{
+  font-family:'Space Mono', monospace;
+  color:#c8102e;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:10px;
+}
+
+.packs-header h2{
+  font-family:'Anton', sans-serif;
+  color:#f7f3ea;
+  font-size:clamp(32px, 5vw, 48px);
+  text-transform:uppercase;
+}
+
+.packs-track-wrap{
+  width:100%;
+  overflow:hidden;
+}
+
+.packs-track{
+  display:flex;
+  gap:26px;
+  width:max-content;           /* laisse la piste s'étendre sur toute la largeur du contenu, sans retour à la ligne */
+  animation:scrollPacks 25s linear infinite;
+}
+
+.packs-track:hover{
+  animation-play-state:paused;  /* LA ligne qui arrête le défilement au survol */
+}
+
+@keyframes scrollPacks{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }   /* -50% car le contenu est dupliqué x2 : à mi-chemin, on est revenu visuellement au début */
+}
+
+.pack-card{
+  position:relative;
+  flex:0 0 300px;               /* largeur fixe, ne rétrécit jamais */
+  background:#161616;
+  border:2px solid #2a2a2a;
+  border-radius:14px;
+  overflow:hidden;
+  transition:border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.pack-card:hover{
+  border-color:#c8102e;
+  box-shadow:0 0 24px rgba(200,16,46,0.45);   /* l'effet "glow" rouge au survol */
+  transform:translateY(-6px);                  /* la carte se soulève légèrement */
+}
+
+.pack-ribbon{
+  position:absolute;
+  top:14px;
+  right:-32px;
+  background:#c8102e;
+  color:#f7f3ea;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  padding:5px 40px;
+  transform:rotate(40deg);      /* effet ruban en diagonale, façon étiquette cadeau */
+  z-index:2;
+}
+
+.pack-img-wrap{
+  aspect-ratio:4/3;
+  overflow:hidden;
+}
+
+.pack-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform 0.5s ease;
+}
+
+.pack-card:hover .pack-img-wrap img{
+  transform:scale(1.05);
+}
+
+.pack-info{
+  padding:20px;
+}
+
+.pack-info h3{
+  color:#f7f3ea;
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+
+.pack-contents{
+  list-style:none;
+  margin-bottom:16px;
+}
+
+.pack-contents li{
+  color:#a8a49a;
+  font-size:13px;
+  padding-left:16px;
+  position:relative;
+  margin-bottom:5px;
+}
+
+.pack-contents li::before{
+  content:'✦';                  /* petite étoile au lieu d'une puce classique, plus "cadeau/anime" */
+  position:absolute;
+  left:0;
+  color:#c8102e;
+  font-size:11px;
+}
+
+.pack-price{
+  font-family:'Space Mono', monospace;
+  color:#f7f3ea;
+  font-weight:700;
+  font-size:16px;
+  margin-bottom:16px;
+}
+
+.pack-btn{
+  width:100%;
+  background:transparent;
+  border:2px solid #c8102e;
+  color:#c8102e;
+  padding:11px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+
+.pack-btn:hover{
+  background:#c8102e;
+  color:#f7f3ea;
+}
+
+.packs-footer{
+  text-align:center;
+  margin-top:50px;
+}
+
+.packs-footer .see-all-btn{
+  color:#f7f3ea;                    /* blanc au lieu de noir, pour être visible sur fond sombre */
+  border-bottom:2px solid #f7f3ea;
+}
+
+.packs-footer .see-all-btn:hover{
+  color:#c8102e;
+  border-color:#c8102e;
+}
