@@ -22,7 +22,7 @@ function nextSlide(){
   goToSlide(next);
 }
 
-setInterval(nextSlide, 5000);
+setInterval(nextSlide, 10000);
 
 /* faq */
 function toggleFaq(button){
@@ -37,3 +37,41 @@ function toggleFaq(button){
     item.classList.add('active');
   }
 }
+
+/* ANIMATION DE COMPTAGE */
+function animateStats(){
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  statNumbers.forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;          // durée totale de l'animation en millisecondes
+    const startTime = performance.now();
+
+    function update(currentTime){
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);   // entre 0 et 1
+      const value = Math.floor(progress * target);
+
+      el.textContent = value.toLocaleString('fr-FR');
+
+      if(progress < 1){
+        requestAnimationFrame(update);
+      }
+    }
+
+    requestAnimationFrame(update);
+  });
+}
+
+// déclenche l'animation seulement quand la section devient visible à l'écran
+const statsSection = document.querySelector('.stats-section');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      animateStats();
+      observer.disconnect();       // une seule fois, pas à chaque fois qu'on scroll dessus/hors de la section
+    }
+  });
+}, { threshold: 0.5 });
+
+observer.observe(statsSection);
