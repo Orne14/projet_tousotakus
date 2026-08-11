@@ -1095,3 +1095,139 @@ nav a:hover::after{
     right:18px;
   }
 }
+
+
+
+/* --------------------------- BOUTIQUE -----------------------------------*/
+.boutique-page{
+  background:#f2efe6;
+  padding:60px 40px 100px;
+}
+
+.boutique-header{
+  max-width:600px;
+  margin:0 auto 50px;
+  text-align:center;
+}
+
+.boutique-header h1{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:clamp(32px, 5vw, 48px);
+  text-transform:uppercase;
+  margin-bottom:14px;
+}
+
+.boutique-header p{
+  color:#5a564c;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.boutique-layout{
+  max-width:1300px;
+  margin:0 auto;
+  display:flex;
+  gap:40px;
+  align-items:flex-start;
+}
+
+/* ===== SIDEBAR FILTRES ===== */
+.filters-sidebar{
+  flex:0 0 220px;
+  position:sticky;
+  top:100px;              /* reste visible en scrollant, juste sous le header du site */
+  background:#ffffff;
+  border-radius:14px;
+  padding:26px 20px;
+}
+
+.filters-sidebar h4{
+  color:#0b0b0d;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:18px;
+}
+
+.filter-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.filter-btn{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:11px 14px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:600;
+  color:#5a564c;
+  cursor:pointer;
+  transition:background 0.25s ease, color 0.25s ease;
+}
+
+.filter-btn:hover{
+  background:#f2efe6;
+  color:#0b0b0d;
+}
+
+.filter-btn.active{
+  background:#c8102e;
+  color:#f7f3ea;
+}
+
+/* ===== CONTENU PRODUITS ===== */
+.boutique-content{
+  flex:1;
+}
+
+.load-more-wrap{
+  text-align:center;
+  margin-top:40px;
+}
+
+.load-more-btn{
+  background:transparent;
+  border:2px solid #0b0b0d;
+  color:#0b0b0d;
+  padding:13px 36px;
+  border-radius:30px;
+  font-weight:700;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+
+.load-more-btn:hover{
+  background:#0b0b0d;
+  color:#f7f3ea;
+}
+
+.load-more-btn.hidden{
+  display:none;               /* caché quand tous les produits sont déjà affichés */
+}
+
+@media(max-width:900px){
+  .boutique-layout{
+    flex-direction:column;
+  }
+  .filters-sidebar{
+    position:static;
+    width:100%;
+    flex:1;
+  }
+  .filter-list{
+    flex-direction:row;
+    flex-wrap:wrap;
+  }
+  .filter-btn{
+    width:auto;
+  }
+}

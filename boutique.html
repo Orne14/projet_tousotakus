@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <title>Boutique</title>
+</head>
+<body>
+    <header>
+        <div class="nav-wrap">
+            <div class="logo">
+                <img src="./images/logo.jpeg " alt="TOUSOTAKUS" class="logo-img">
+                <span class="logo-text">TOUSOTAKUS</span>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="./index.html">Accueil</a></li>
+                    <li><a href="./boutique.html">Boutique</a></li>
+                    <li><a href="./apropos.html">À propos</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="cart-btn" onclick="toggleCart(true)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <a href="#contact" class="cta-btn">Contactez-nous</a>
+            </div>
+        </div>
+    </header>
+
+    <!--produits-->
+    <section class="boutique-page" id="boutique">
+        <div class="boutique-header">
+            <h1>Nos Produits</h1>
+            <p>Découvre toute la collection TOUSOTAKUS Photocard, vêtements, accessoires inspirés de l'univers otaku.</p>
+        </div>
+
+        <div class="boutique-layout">
+            <!-- Filtres verticaux -->
+            <aside class="filters-sidebar">
+                <h4>Catégories</h4>
+                <ul class="filter-list">
+                    <li><button class="filter-btn active" data-category="tout">Tout</button></li>
+                    <li><button class="filter-btn" data-category="tshirt">T-shirt</button></li>
+                    <li><button class="filter-btn" data-category="jean">Jean</button></li>
+                    <li><button class="filter-btn" data-category="poster">Poster</button></li>
+                    <li><button class="filter-btn" data-category="photocard">Photocard</button></li>
+                    <li><button class="filter-btn" data-category="porte-cles">Porte-clés</button></li>
+                    <li><button class="filter-btn" data-category="sticker">Sticker</button></li>
+                    <li><button class="filter-btn" data-category="autre">Autre</button></li>
+                </ul>
+            </aside>
+
+            <!-- Grille produits -->
+            <div class="boutique-content">
+                <div class="product-grid" id="productGrid"></div>
+
+                <div class="load-more-wrap">
+                    <button class="load-more-btn" id="loadMoreBtn">Voir plus</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <script src="./js/scripts.js"></script>
+</body>
+</html>
