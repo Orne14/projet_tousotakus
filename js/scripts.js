@@ -80,10 +80,7 @@ if(statsSection){
   observer.observe(statsSection);
 }
 
-// ===== PANIER (à garder tel quel si tu l'as déjà codé) =====
-// ... ton code de panier ici s'il existe déjà ...
-
-// ===== BOUTIQUE : produits + filtres + voir plus (seulement si présent sur la page) =====
+// ===== BOUTIQUE : produits + filtres + voir plus =====
 const grid = document.getElementById('productGrid');
 if(grid){
   const allProducts = [
@@ -159,4 +156,55 @@ if(grid){
   });
 
   renderProducts();
+}
+
+// ===== PACKS CADEAUX =====
+const packsGrid = document.getElementById('packsGrid');
+if(packsGrid){
+  const allPacks = [
+    {id:1, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
+    {id:2, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
+    {id:3, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
+    // ajoute autant de packs que tu veux ici, même format que ci-dessus
+  ];
+
+  const PACKS_INITIAL = 9;
+  const PACKS_PER_CLICK = 6;
+  let visiblePacksCount = PACKS_INITIAL;
+
+  const loadMorePacksBtn = document.getElementById('loadMorePacksBtn');
+
+  function renderPacks(){
+    const toShow = allPacks.slice(0, visiblePacksCount);
+
+    packsGrid.innerHTML = toShow.map(pack => `
+      <div class="pack-card">
+        <span class="pack-ribbon">Pack</span>
+        <div class="pack-img-wrap">
+          <img src="${pack.img}" alt="${pack.name}">
+        </div>
+        <div class="pack-info">
+          <h3>${pack.name}</h3>
+          <ul class="pack-contents">
+            ${pack.contents.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+          <p class="pack-price">${pack.price}</p>
+          <button class="pack-btn">Offrir ce pack</button>
+        </div>
+      </div>
+    `).join('');
+
+    if(visiblePacksCount >= allPacks.length){
+      loadMorePacksBtn.classList.add('hidden');
+    } else {
+      loadMorePacksBtn.classList.remove('hidden');
+    }
+  }
+
+  loadMorePacksBtn.addEventListener('click', () => {
+    visiblePacksCount += PACKS_PER_CLICK;
+    renderPacks();
+  });
+
+  renderPacks();
 }
