@@ -35,6 +35,19 @@
                 </button>
                 <a href="#contact" class="cta-btn">Contactez-nous</a>
             </div>
+            <!-- Panier -->
+            <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+                <div class="cart-panel" id="cart-panel">
+                    <div class="cart-head">
+                        <h3>Ta sélection</h3>
+                        <button class="cart-close" onclick="toggleCart(false)">✕</button>
+                    </div>
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-foot">
+                    <div class="cart-total"><span>Total</span><span id="cart-total">0 FCFA</span></div>
+                    <a class="btn" id="wa-checkout" href="#" target="_blank">Commander via WhatsApp</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -42,28 +55,28 @@
     <section class="hero-slider" id="accueil">
         <div class="slide active" style="background-image:url('images/produits.jpg')">
             <div class="slide-overlay"></div>
-            <div class="slide-content">
-            <h1>Énergie Anime</h1>
-            <p>Plongez dans le monde vibrant des animés japonais. Passion à chaque image.</p>
-            <a href="#boutique" class="hero-btn">Commander maintenant</a>
+            <div class="slide-content reveal">
+                <h1>Énergie Anime</h1>
+                <p>Plongez dans le monde vibrant des animés japonais. Passion à chaque image.</p>
+                <a href="#boutique" class="hero-btn">Commander maintenant</a>
             </div>
         </div>
 
         <div class="slide" style="background-image:url('images/packhero.jpg')">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-            <h1>Packs Cadeaux</h1>
-            <p>Des coffrets prêts à offrir, pensés pour les fans d'anime.</p>
-            <a href="#packs" class="hero-btn">Voir nos packs</a>
+                <h1>Packs Cadeaux</h1>
+                <p>Des coffrets prêts à offrir, pensés pour les fans d'anime.</p>
+                <a href="#packs" class="hero-btn">Voir nos packs</a>
             </div>
         </div>
 
         <div class="slide" style="background-image:url('images/communaute.jpg')">
             <div class="slide-overlay"></div>
             <div class="slide-content">
-            <h1>Rejoins la Communauté</h1>
-            <p>Nouveautés, drops en avant-première et coulisses de la boutique.</p>
-            <a href="#communaute" class="hero-btn">Rejoignez la communauté</a>
+                <h1>Rejoins la Communauté</h1>
+                <p>Nouveautés, drops en avant-première et coulisses de la boutique.</p>
+                <a href="#communaute" class="hero-btn">Rejoignez la communauté</a>
             </div>
         </div>
 
@@ -79,105 +92,106 @@
     
     <!-- produits -->
     <section class="shop-section" id="boutique">
-        <div class="shop-header">
+        <div class="shop-header reveal">
             <h2>Derniers Drops</h2>
         </div>
 
-        <div class="product-grid">
-            <div class="product-card">
+        <div class="product-grid reveal">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
             </div>
-            <div class="product-card">
+            <div class="product-card reveal-group">
                 <div class="product-img-wrap">
                     <img src="images/t-shirt.jpg" alt="Figurine Goku">
                 </div>
                 <div class="product-info">
-                    <h3>Figurine Goku</h3>
-                    <p class="product-price">€29.99</p>
-                    <p class="product-desc">Figurine de collection en édition limitée de Goku. Parfaite pour votre étagère.</p>
-                    <button class="buy-btn">Achetez Maintenant</button>
+                    <h3>Stickers</h3>
+                    <p class="product-price">150 FCFA</p>
+                    <p class="product-desc">Stikers de collection en édition limitée.</p>
+                    <button class="buy-btn" onclick="addToCart('product-1', 'Stikers', 150, '150 FCFA')">Achetez Maintenant</button>
                 </div>
-            </div>
+            </div> 
+            
         </div>
 
-        <div class="shop-footer">
-            <a href="#tous-produits" class="see-all-btn">
-            Voir tout
-            <span class="arrow">→</span>
+        <div class="shop-footer reveal-group">
+            <a href="./boutique.html" class="see-all-btn">
+                Voir tout
+                <span class="arrow">→</span>
             </a>
         </div>
     </section>
@@ -185,16 +199,16 @@
     
     <!-- a propos -->
      <section class="about-section" id="apropos">
-        <div class="about-container">
+        <div class="about-container reveal">
             <div class="about-img-wrap">
                 <img src="images/apropos.jpg" alt="TOUSOTAKUS">
             </div>
 
-            <div class="about-text">
+            <div class="about-text reveal">
                 <span class="about-tag">Notre Histoire</span>
                 <h2>À propos de TOUSOTAKUS</h2>
                 <p>TOUSOTAKUS est né d'une passion simple : rendre la culture otaku accessible, sans compromis sur la qualité ni le style. Chaque produit est choisi à la main pour les fans qui veulent vivre leur passion au quotidien.</p>
-                <a href="#" class="about-btn">En savoir plus</a>
+                <a href="./apropos.html" class="about-btn">En savoir plus</a>
             </div>
         </div>
     </section>
@@ -202,14 +216,14 @@
     
     <!-- packs cadeaux -->
     <section class="packs-section" id="packs">
-        <div class="packs-header">
+        <div class="packs-header reveal">
             <span class="packs-tag">Pour Offrir</span>
             <h2>Prêt à Offrir</h2>
         </div>
 
-        <div class="packs-track-wrap">
+        <div class="packs-track-wrap reveal">
             <div class="packs-track">
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
                     <div class="pack-img-wrap">
                         <img src="images/pack.jpg" alt="Pack Découverte">
@@ -222,11 +236,11 @@
                             <li>1 Pin's collector</li>
                         </ul>
                         <p class="pack-price">9 500 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-decouverte', 'Pack Découverte', 9500, '9 500 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
 
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
                     <div class="pack-img-wrap">
                         <img src="images/pack-collector.jpg" alt="Pack Collector">
@@ -239,27 +253,27 @@
                             <li>Goodies surprise</li>
                         </ul>
                         <p class="pack-price">24 000 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-collector', 'Pack Collector', 24000, '24 000 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
 
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
-                        <div class="pack-img-wrap">
+                    <div class="pack-img-wrap">
                         <img src="images/pack-duo.jpg" alt="Pack Duo Fan">
                     </div>
                     <div class="pack-info">
-                    <h3>Pack Duo Fan</h3>
+                        <h3>Pack Duo Fan</h3>
                         <ul class="pack-contents">
                             <li>2 T-shirts assortis</li>
                             <li>2 Accessoires</li>
                         </ul>
                         <p class="pack-price">14 000 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-duo', 'Pack Duo Fan', 14000, '14 000 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
 
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
                     <div class="pack-img-wrap">
                         <img src="images/pack-decouverte.jpg" alt="Pack Découverte">
@@ -272,11 +286,11 @@
                             <li>1 Pin's collector</li>
                         </ul>
                         <p class="pack-price">9 500 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-decouverte', 'Pack Découverte', 9500, '9 500 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
 
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
                     <div class="pack-img-wrap">
                         <img src="images/pack-collector.jpg" alt="Pack Collector">
@@ -289,11 +303,11 @@
                             <li>Goodies surprise</li>
                         </ul>
                         <p class="pack-price">24 000 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-collector', 'Pack Collector', 24000, '24 000 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
 
-                <div class="pack-card">
+                <div class="pack-card reveal-group">
                     <span class="pack-ribbon">Pack</span>
                     <div class="pack-img-wrap">
                         <img src="images/pack-duo.jpg" alt="Pack Duo Fan">
@@ -305,13 +319,13 @@
                             <li>2 Accessoires</li>
                         </ul>
                         <p class="pack-price">14 000 FCFA</p>
-                        <button class="pack-btn">Offrir ce pack</button>
+                        <button class="pack-btn" onclick="addToCart('pack-duo', 'Pack Duo Fan', 14000, '14 000 FCFA')">Offrir ce pack</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="packs-footer">
+        <div class="packs-footer reveal">
             <a href="boutique.html#packs" class="see-all-btn">
             Voir plus
             <span class="arrow">→</span>
@@ -321,7 +335,7 @@
 
     <!-- communauté -->
     <section class="community-section" id="communaute">
-        <div class="community-container">
+        <div class="community-container reveal">
             <div class="community-text">
                 <span class="community-tag">Rejoins l'aventure</span>
                 <h2>Notre Communauté</h2>
@@ -329,7 +343,7 @@
                 <a href="#" class="community-btn">Rejoignez-nous</a>
             </div>
 
-            <div class="community-img-wrap">
+            <div class="community-img-wrap reveal">
                 <img src="images/communaute.jpg" alt="Communauté TOUSOTAKUS">
             </div>
         </div>
@@ -337,12 +351,12 @@
 
     <!-- pourquoi -->
     <section class="why-section" id="pourquoi">
-        <div class="why-header">
+        <div class="why-header reveal">
             <h2>Pourquoi Nous Choisir</h2>
         </div>
 
-        <div class="why-grid">
-            <div class="why-card">
+        <div class="why-grid reveal">
+            <div class="why-card reveal-group">
                 <p class="why-title">Produits 100% authentiques</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"></path></svg>
@@ -350,7 +364,7 @@
                 <p class="why-label">Qualité Garantie</p>
             </div>
 
-            <div class="why-card">
+            <div class="why-card reveal-group">
                 <p class="why-title">Livraison rapide partout</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
@@ -358,7 +372,7 @@
                 <p class="why-label">Livraison Express</p>
             </div>
 
-            <div class="why-card">
+            <div class="why-card reveal-group">
                 <p class="why-title">Réponse rapide sur WhatsApp</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
@@ -366,7 +380,7 @@
                 <p class="why-label">Support Réactif</p>
             </div>
 
-            <div class="why-card">
+            <div class="why-card reveal-group">
                 <p class="why-title">Un large choix d'articles</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -374,7 +388,7 @@
                 <p class="why-label">Sélection Variée</p>
             </div>
 
-            <div class="why-card">
+            <div class="why-card reveal-group">
                 <p class="why-title">Des coffrets pensés pour offrir</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
@@ -382,7 +396,7 @@
                 <p class="why-label">Packs Cadeaux Uniques</p>
             </div>
 
-            <div class="why-card">
+            <div class="why-card reveal-group">
                 <p class="why-title">Une famille de vrais fans</p>
                 <div class="why-icon-wrap">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -394,69 +408,69 @@
 
     <!-- faq -->
     <section class="faq-section" id="faq">
-        <div class="faq-header">
+        <div class="faq-header reveal">
             <h2>Questions Fréquemment Posées</h2>
         </div>
 
-        <div class="faq-list">
-            <div class="faq-item active">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Comment puis-je acheter des produits ?
-                <span class="faq-chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-            </button>
-            <div class="faq-answer">
-                <p>Parcours notre boutique, ajoute les articles qui t'intéressent à ta sélection, puis clique sur "Commander via WhatsApp". Ta commande est envoyée automatiquement, il ne te reste qu'à confirmer.</p>
-            </div>
-            </div>
-
-            <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Quels types de produits sont offerts ?
-                <span class="faq-chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-            </button>
-            <div class="faq-answer">
-                <p>Vêtements, T-shirt, accessoires, packs cadeaux,... inspirés de l'univers anime. Une sélection pensée pour les vrais fans otaku.</p>
-            </div>
+        <div class="faq-list reveal">
+            <div class="faq-item active reveal-group">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Comment puis-je acheter des produits ?
+                    <span class="faq-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Parcours notre boutique, ajoute les articles qui t'intéressent à ta sélection, puis clique sur "Commander via WhatsApp". Ta commande est envoyée automatiquement, il ne te reste qu'à confirmer.</p>
+                </div>
             </div>
 
-            <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Y a-t-il des réductions spéciales ?
-                <span class="faq-chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-            </button>
-            <div class="faq-answer">
-                <p>Suis notre communauté sur les réseaux pour être informé en priorité des offres et promotions ponctuelles.</p>
-            </div>
-            </div>
-
-            <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Comment puis-je contacter le support ?
-                <span class="faq-chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-            </button>
-            <div class="faq-answer">
-                <p>Utilise le contact WhatsApp présent sur notre page. C'est le moyen le plus rapide de nous joindre.</p>
-            </div>
+            <div class="faq-item reveal-group">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Quels types de produits sont offerts ?
+                    <span class="faq-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Vêtements, T-shirt, accessoires, packs cadeaux,... inspirés de l'univers anime. Une sélection pensée pour les vrais fans otaku.</p>
+                </div>
             </div>
 
-            <div class="faq-item">
-            <button class="faq-question" onclick="toggleFaq(this)">
-                Quels modes de paiement sont acceptés ?
-                <span class="faq-chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                </span>
-            </button>
-            <div class="faq-answer">
-                <p>Le paiement se convient directement avec nous via WhatsApp au moment de la commande (Mobile Money, espèces à la livraison, selon disponibilité).</p>
+            <div class="faq-item reveal-group">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Y a-t-il des réductions spéciales ?
+                    <span class="faq-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                </button>
+                    <div class="faq-answer">
+                    <p>Suis notre communauté sur les réseaux pour être informé en priorité des offres et promotions ponctuelles.</p>
+                </div>
             </div>
+
+            <div class="faq-item reveal-group">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Comment puis-je contacter le support ?
+                    <span class="faq-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Utilise le contact WhatsApp présent sur notre page. C'est le moyen le plus rapide de nous joindre.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal-group">
+                <button class="faq-question" onclick="toggleFaq(this)">
+                    Quels modes de paiement sont acceptés ?
+                    <span class="faq-chevron">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </span>
+                </button>
+                <div class="faq-answer">
+                    <p>Le paiement se convient directement avec nous via WhatsApp au moment de la commande (Mobile Money, espèces à la livraison, selon disponibilité).</p>
+                </div>
             </div>
         </div>
     </section>
@@ -464,7 +478,7 @@
 
     <!-- Stats -->
     <section class="stats-section">
-        <div class="stats-grid">
+        <div class="stats-grid reveal">
             <div class="stat-item">
                 <p class="stat-number" data-target="1500">0</p>
                 <p class="stat-label">Anime Populaires</p>
@@ -481,14 +495,14 @@
     </section>
 
     <!--CTA-->
-    <section class="final-cta">
+    <section class="final-cta reveal">
         <p>Une question avant de commander ?</p>
         <a href="https://wa.me/22900000000" target="_blank" class="final-cta-btn">Contactez-nous</a>
     </section>
 
     <!--footer-->
     <footer class="site-footer">
-        <div class="footer-top">
+        <div class="footer-top reveal">
             <div class="footer-brand">
                 <div class="footer-logo">
                     <img src="images/logo.jpeg" alt="TOUSOTAKUS">

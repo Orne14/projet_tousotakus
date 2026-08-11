@@ -34,37 +34,50 @@
                 </button>
                 <a href="#contact" class="cta-btn">Contactez-nous</a>
             </div>
+
+            <!-- Panier -->
+            <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+                <div class="cart-panel" id="cart-panel">
+                    <div class="cart-head">
+                        <h3>Ta sélection</h3>
+                        <button class="cart-close" onclick="toggleCart(false)">✕</button>
+                    </div>
+                <div class="cart-items" id="cart-items"></div>
+                <div class="cart-foot">
+                    <div class="cart-total"><span>Total</span><span id="cart-total">0 FCFA</span></div>
+                    <a class="btn" id="wa-checkout" href="#" target="_blank">Commander via WhatsApp</a>
+                </div>
+            </div>
         </div>
     </header>
 
     <!--produits-->
     <section class="boutique-page" id="boutique">
-        <div class="boutique-header">
+        <div class="boutique-header reveal">
             <h1>Nos Produits</h1>
             <p>Découvre toute la collection TOUSOTAKUS Photocard, vêtements, accessoires inspirés de l'univers otaku.</p>
         </div>
 
-        <div class="boutique-layout">
+        <div class="boutique-layout reveal">
             <!-- Filtres verticaux -->
-            <aside class="filters-sidebar">
+            <aside class="filters-sidebar reveal">
                 <h4>Catégories</h4>
-                <ul class="filter-list">
-                    <li><button class="filter-btn active" data-category="tout">Tout</button></li>
-                    <li><button class="filter-btn" data-category="tshirt">T-shirt</button></li>
-                    <li><button class="filter-btn" data-category="jean">Jean</button></li>
-                    <li><button class="filter-btn" data-category="poster">Poster</button></li>
-                    <li><button class="filter-btn" data-category="photocard">Photocard</button></li>
-                    <li><button class="filter-btn" data-category="porte-cles">Porte-clés</button></li>
-                    <li><button class="filter-btn" data-category="sticker">Sticker</button></li>
-                    <li><button class="filter-btn" data-category="autre">Autre</button></li>
-                </ul>
+                    <ul class="filter-list">
+                        <li><button class="filter-btn active" data-category="tout">Tout</button></li>
+                        <li><button class="filter-btn" data-category="posters">Posters</button></li>
+                        <li><button class="filter-btn" data-category="photocards">Photocards</button></li>
+                        <li><button class="filter-btn" data-category="stickers">Stickers</button></li>
+                        <li><button class="filter-btn" data-category="vetements">Vêtements</button></li>
+                        <li><button class="filter-btn" data-category="inkwear">InkWear</button></li>
+                        <li><button class="filter-btn" data-category="accessoires">Accessoires</button></li>
+                    </ul>
             </aside>
 
             <!-- Grille produits -->
-            <div class="boutique-content">
-                <div class="product-grid" id="productGrid"></div>
+            <div class="boutique-content reveal">
+                <div class="product-grid reveal-group" id="productGrid"></div>
 
-                <div class="load-more-wrap">
+                <div class="load-more-wrap reveal-group">
                     <button class="load-more-btn" id="loadMoreBtn">Voir plus</button>
                 </div>
             </div>
@@ -73,8 +86,8 @@
 
     <!--pormo-->
     <section class="promo-banner">
-        <div class="promo-overlay"></div>
-        <div class="promo-content">
+        <div class="promo-overlay reveal-group"></div>
+        <div class="promo-content reveal-group">
             <p class="promo-eyebrow">Envie de faire plaisir sans te prendre la tête ?</p>
             <h2>Nos Packs, Le Choix Malin</h2>
         </div>
@@ -82,73 +95,73 @@
 
     <!--packs-->
     <section class="packs-page" id="packs">
-        <div class="packs-page-header">
+        <div class="packs-page-header reveal">
             <h2>Nos Packs Cadeaux</h2>
             <p>Des coffrets prêts à offrir, pensés pour faire plaisir sans se prendre la tête. Chaque pack regroupe plusieurs articles à un prix avantageux.</p>
         </div>
 
-        <div class="packs-grid" id="packsGrid"></div>
+        <div class="packs-grid reveal-group" id="packsGrid"></div>
 
-        <div class="load-more-wrap">
+        <div class="load-more-wrap reveal-group">
             <button class="load-more-btn" id="loadMorePacksBtn">Voir plus</button>
         </div>
     </section>
 
     <!--avis-->
     <section class="reviews-section" id="avis">
-        <div class="reviews-header">
+        <div class="reviews-header reveal-group">
             <h2>Avis</h2>
         </div>
 
-        <div class="reviews-grid">
-            <div class="review-card">
-            <p class="review-text">Une sélection incroyable de produits !</p>
-            <div class="review-avatar">M</div>
-            <p class="review-name">Marie L.</p>
+        <div class="reviews-grid reveal">
+            <div class="review-card reveal-group">
+                <p class="review-text">Une sélection incroyable de produits !</p>
+                <div class="review-avatar">M</div>
+                <p class="review-name">Marie L.</p>
             </div>
 
-            <div class="review-card">
-            <p class="review-text">Toujours satisfait des livraisons rapides !</p>
-            <div class="review-avatar">L</div>
-            <p class="review-name">Lucas T.</p>
+            <div class="review-card reveal-group">
+                <p class="review-text">Toujours satisfait des livraisons rapides !</p>
+                <div class="review-avatar">L</div>
+                <p class="review-name">Lucas T.</p>
             </div>
 
-            <div class="review-card">
-            <p class="review-text">Le service client est exceptionnel !</p>
-            <div class="review-avatar">C</div>
-            <p class="review-name">Clara P.</p>
+            <div class="review-card reveal-group">
+                <p class="review-text">Le service client est exceptionnel !</p>
+                <div class="review-avatar">C</div>
+                <p class="review-name">Clara P.</p>
             </div>
 
-            <div class="review-card">
-            <p class="review-text">Les packs cadeaux sont super originaux !</p>
-            <div class="review-avatar">A</div>
-            <p class="review-name">Adam K.</p>
+            <div class="review-card reveal-group">
+                <p class="review-text">Les packs cadeaux sont super originaux !</p>
+                <div class="review-avatar">A</div>
+                <p class="review-name">Adam K.</p>
             </div>
 
-            <div class="review-card">
-            <p class="review-text">Un vrai paradis pour les otakus !</p>
-            <div class="review-avatar">S</div>
-            <p class="review-name">Sophie J.</p>
+            <div class="review-card reveal-group">
+                <p class="review-text">Un vrai paradis pour les otakus !</p>
+                <div class="review-avatar">S</div>
+                <p class="review-name">Sophie J.</p>
             </div>
 
-            <div class="review-card">
-            <p class="review-text">Produits variés et de qualité !</p>
-            <div class="review-avatar">N</div>
-            <p class="review-name">Nicolas B.</p>
+            <div class="review-card reveal-group">
+                <p class="review-text">Produits variés et de qualité !</p>
+                <div class="review-avatar">N</div>
+                <p class="review-name">Nicolas B.</p>
             </div>
         </div>
     </section>
 
     <!--CTA-->
-    <section class="final-cta">
+    <section class="final-cta reveal-group">
         <p>Une question avant de commander ?</p>
         <a href="https://wa.me/22900000000" target="_blank" class="final-cta-btn">Contactez-nous</a>
     </section>
 
     <!--footer-->
     <footer class="site-footer">
-        <div class="footer-top">
-            <div class="footer-brand">
+        <div class="footer-top reveal">
+            <div class="footer-brand reveal-group">
                 <div class="footer-logo">
                     <img src="images/logo.jpeg" alt="TOUSOTAKUS">
                     <span>TOUSOTAKUS</span>
@@ -156,7 +169,7 @@
                 <p>La culture otaku, sélectionnée avec passion.</p>
             </div>
 
-            <div class="footer-links">
+            <div class="footer-links reveal-group">
                 <h4>Navigation</h4>
                 <a href="index.html">Accueil</a>
                 <a href="boutique.html">Boutique</a>
@@ -164,7 +177,7 @@
                 <a href="contact.html">Contact</a>
             </div>
 
-            <div class="footer-socials">
+            <div class="footer-socials reveal-group">
                 <h4>Suivez-nous</h4>
                 <a href="#" target="_blank">TikTok</a>
                 <a href="#" target="_blank">Instagram</a>
@@ -173,7 +186,7 @@
             </div>
         </div>
 
-        <div class="footer-bottom">
+        <div class="footer-bottom reveal-group">
             <p>© 2026 TOUSOTAKUS. Tous droits réservés.</p>
         </div>
     </footer>

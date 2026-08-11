@@ -29,6 +29,104 @@ if(slides.length > 0){
   setInterval(nextSlide, 5000);
 }
 
+// ===== PANIER (présent sur toutes les pages) =====
+const WHATSAPP_NUMBER = "22900000000"; // remplace par le vrai numéro
+
+function getCart(){
+  const stored = localStorage.getItem('tousotakus_cart');
+  return stored ? JSON.parse(stored) : {};
+}
+
+function saveCart(cart){
+  localStorage.setItem('tousotakus_cart', JSON.stringify(cart));
+}
+
+// ajoute un article au panier — id unique (ex: "product-3" ou "pack-1"), name, price affiché, priceValue en nombre
+function addToCart(uid, name, priceValue, priceLabel){
+  const cart = getCart();
+  if(cart[uid]){
+    cart[uid].qty += 1;
+  } else {
+    cart[uid] = { name, priceValue, priceLabel, qty:1 };
+  }
+  saveCart(cart);
+  updateCartUI();
+  toggleCart(true);
+}
+
+function changeQty(uid, delta){
+  const cart = getCart();
+  if(!cart[uid]) return;
+  cart[uid].qty += delta;
+  if(cart[uid].qty <= 0) delete cart[uid];
+  saveCart(cart);
+  updateCartUI();
+}
+
+function updateCartUI(){
+  const cart = getCart();
+  const uids = Object.keys(cart);
+  const cartCountEl = document.querySelector('.cart-count');
+  const itemsEl = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('wa-checkout');
+
+  if(!itemsEl) return; // sécurité si le panier n'est pas présent sur cette page
+
+  const count = uids.reduce((sum, uid) => sum + cart[uid].qty, 0);
+  if(cartCountEl) cartCountEl.textContent = count;
+
+  if(uids.length === 0){
+    itemsEl.innerHTML = '<div class="cart-empty">Ta sélection est vide pour l\'instant.</div>';
+    totalEl.textContent = '0 FCFA';
+    checkoutBtn.classList.add('disabled');
+    return;
+  }
+
+  let total = 0;
+  itemsEl.innerHTML = uids.map(uid => {
+    const item = cart[uid];
+    total += item.priceValue * item.qty;
+    return `
+      <div class="cart-item">
+        <div>
+          <div class="ci-name">${item.name}</div>
+          <div class="ci-price">${item.priceLabel}</div>
+        </div>
+        <div class="ci-qty">
+          <button onclick="changeQty('${uid}', -1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty('${uid}', 1)">+</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  totalEl.textContent = total.toLocaleString('fr-FR') + ' FCFA';
+  checkoutBtn.classList.remove('disabled');
+
+  let message = "Bonjour TOUSOTAKUS ! Je voudrais commander :%0A";
+  uids.forEach(uid => {
+    const item = cart[uid];
+    message += `- ${item.name} (x${item.qty})%0A`;
+  });
+  message += `%0ATotal estimé : ${total.toLocaleString('fr-FR')} FCFA`;
+  checkoutBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+}
+
+function toggleCart(open){
+  const panel = document.getElementById('cart-panel');
+  const overlay = document.getElementById('overlay');
+  if(!panel) return;
+  panel.classList.toggle('open', open);
+  overlay.classList.toggle('open', open);
+}
+
+// initialise l'affichage du panier au chargement de CHAQUE page
+updateCartUI();
+
+// end panier//
+
 // ===== FAQ (seulement si présente sur la page) =====
 window.toggleFaq = function(button){
   const item = button.closest('.faq-item');
@@ -84,20 +182,184 @@ if(statsSection){
 const grid = document.getElementById('productGrid');
 if(grid){
   const allProducts = [
-    {id:1, name:"Figurine Goku", price:"€29.99", category:"autre", img:"images/produit-placeholder.jpg", desc:"Figurine de collection édition limitée."},
-    {id:2, name:"T-shirt Naruto", price:"€19.99", category:"tshirt", img:"images/produit-placeholder.jpg", desc:"T-shirt stylé inspiré de Naruto."},
-    {id:3, name:"Poster Attack on Titan", price:"€9.99", category:"poster", img:"images/produit-placeholder.jpg", desc:"Poster vibrant pour illuminer tes murs."},
-    {id:4, name:"Porte-clés Ramen Chibi", price:"€4.99", category:"porte-cles", img:"images/produit-placeholder.jpg", desc:"Petit porte-clés kawaii."},
-    {id:5, name:"Sticker Pack Manga", price:"€3.50", category:"sticker", img:"images/produit-placeholder.jpg", desc:"Lot de stickers holographiques."},
-    {id:6, name:"Photocard Collector", price:"€2.99", category:"photocard", img:"images/produit-placeholder.jpg", desc:"Carte à collectionner édition rare."},
-    {id:7, name:"Jean Streetwear Otaku", price:"€39.99", category:"jean", img:"images/produit-placeholder.jpg", desc:"Jean confortable, coupe moderne."},
-    {id:8, name:"T-shirt Dragon Rouge", price:"€21.99", category:"tshirt", img:"images/produit-placeholder.jpg", desc:"Design exclusif dragon rouge."},
-    {id:9, name:"Poster One Piece", price:"€9.99", category:"poster", img:"images/produit-placeholder.jpg", desc:"Poster grand format One Piece."},
-    {id:10, name:"Porte-clés Katana", price:"€5.99", category:"porte-cles", img:"images/produit-placeholder.jpg", desc:"Mini katana miniature."},
-    {id:11, name:"Sticker Sakura", price:"€3.50", category:"sticker", img:"images/produit-placeholder.jpg", desc:"Sticker fleur de cerisier."},
-    {id:12, name:"Photocard Édition Nuit", price:"€2.99", category:"photocard", img:"images/produit-placeholder.jpg", desc:"Édition limitée thème nocturne."},
-    {id:13, name:"Jean Slim Anime", price:"€37.99", category:"jean", img:"images/produit-placeholder.jpg", desc:"Coupe slim, très demandé."},
-    {id:14, name:"T-shirt Kunoichi", price:"€22.99", category:"tshirt", img:"images/produit-placeholder.jpg", desc:"Design exclusif ninja."},
+    {
+      id:1,
+      name:"Poster A5",
+      price:250,
+      priceFrom:false,           // false = prix fixe, true = "à partir de"
+      unit:"FCFA",
+      category:"posters",
+      status:"disponible",       // "disponible" | "sur-commande" | "rupture"
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Décoration • Collection"
+    },
+    {
+      id:2,
+      name:"Poster A4",
+      price:500,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"posters",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Décoration • Collection"
+    },
+    {
+      id:3,
+      name:"Poster A3",
+      price:1000,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"posters",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Grand format • Anime • Décoration"
+    },
+    {
+      id:4,
+      name:"Photocard Collector",
+      price:100,
+      priceFrom:false,
+      unit:"FCFA / unité",
+      category:"photocards",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Collection • Souvenir"
+    },
+    {
+      id:5,
+      name:"Pack de Stickers Anime",
+      price:1000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"stickers",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Fun • Personnalisation"
+    },
+    {
+      id:6,
+      name:"T-shirt Imprimé",
+      price:5500,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Style • Streetwear"
+    },
+    {
+      id:7,
+      name:"T-shirt Brodé",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Broderie • Anime • Qualité"
+    },
+    {
+      id:8,
+      name:"Jean InkWear",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Collection InkWear • Style TOUSOTAKUS"
+    },
+    {
+      id:9,
+      name:"Pack de Stickers Anime",
+      price:1000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"stickers",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Fun • Personnalisation"
+    },
+    {
+      id:10,
+      name:"T-shirt Imprimé",
+      price:5500,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Style • Streetwear"
+    },
+    {
+      id:11,
+      name:"T-shirt Brodé",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Broderie • Anime • Qualité"
+    },
+    {
+      id:12,
+      name:"Jean InkWear",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Collection InkWear • Style TOUSOTAKUS"
+    },
+    {
+      id:13,
+      name:"Pack de Stickers Anime",
+      price:1000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"stickers",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Fun • Personnalisation"
+    },
+    {
+      id:14,
+      name:"T-shirt Imprimé",
+      price:5500,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"disponible",
+      img:"images/produit-placeholder.jpg",
+      desc:"Anime • Style • Streetwear"
+    },
+    {
+      id:15,
+      name:"T-shirt Brodé",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Broderie • Anime • Qualité"
+    },
+    {
+      id:16,
+      name:"Jean InkWear",
+      price:6000,
+      priceFrom:true,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produit-placeholder.jpg",
+      desc:"Collection InkWear • Style TOUSOTAKUS"
+    },
+    
+    
   ];
 
   const ROWS_INITIAL = 3;
@@ -114,30 +376,50 @@ if(grid){
     return allProducts.filter(p => p.category === currentCategory);
   }
 
-  function renderProducts(){
-    const filtered = getFilteredProducts();
-    const toShow = filtered.slice(0, visibleCount);
+  const statusLabels = {
+  "disponible": "Disponible",
+  "sur-commande": "Sur commande",
+  "rupture": "Rupture de stock"
+};
 
-    grid.innerHTML = toShow.map(p => `
-      <div class="product-card">
-        <div class="product-img-wrap">
-          <img src="${p.img}" alt="${p.name}">
-        </div>
-        <div class="product-info">
-          <h3>${p.name}</h3>
-          <p class="product-price">${p.price}</p>
-          <p class="product-desc">${p.desc}</p>
-          <button class="buy-btn">Achetez Maintenant</button>
-        </div>
+function formatPrice(product){
+  const prefix = product.priceFrom ? "À partir de " : "";
+  return `${prefix}${product.price.toLocaleString('fr-FR')} ${product.unit}`;
+}
+
+function buildWhatsAppLink(productName){
+  const message = `Bonjour TOUSOTAKUS ! Je suis intéressé(e) par : ${productName}. Est-ce disponible ?`;
+  return `https://wa.me/22900000000?text=${encodeURIComponent(message)}`;
+}
+
+function renderProducts(){
+  const filtered = getFilteredProducts();
+  const toShow = filtered.slice(0, visibleCount);
+
+  grid.innerHTML = toShow.map(p => `
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="${p.img}" alt="${p.name}">
+        <span class="status-badge status-${p.status}">${statusLabels[p.status]}</span>
       </div>
-    `).join('');
+      <div class="product-info">
+        <h3>${p.name}</h3>
+        <p class="product-price">${formatPrice(p)}</p>
+        <p class="product-desc">${p.desc}</p>
+        ${p.status === 'rupture'
+            ? `<button class="buy-btn disabled" disabled>Indisponible</button>`
+            : `<button class="buy-btn" onclick="addToCart('product-${p.id}', '${p.name}', ${p.price}, '${formatPrice(p)}')">Achetez Maintenant</button>`
+          }
+      </div>
+    </div>
+  `).join('');
 
-    if(visibleCount >= filtered.length){
-      loadMoreBtn.classList.add('hidden');
-    } else {
-      loadMoreBtn.classList.remove('hidden');
-    }
+  if(visibleCount >= filtered.length){
+    loadMoreBtn.classList.add('hidden');
+  } else {
+    loadMoreBtn.classList.remove('hidden');
   }
+}
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -165,7 +447,16 @@ if(packsGrid){
     {id:1, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
     {id:2, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
     {id:3, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
-    // ajoute autant de packs que tu veux ici, même format que ci-dessus
+    {id:4, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
+    {id:5, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
+    {id:6, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
+    {id:7, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
+    {id:8, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
+    {id:9, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
+    {id:10, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
+    {id:11, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
+    {id:12, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
+    
   ];
 
   const PACKS_INITIAL = 9;
@@ -189,7 +480,7 @@ if(packsGrid){
             ${pack.contents.map(item => `<li>${item}</li>`).join('')}
           </ul>
           <p class="pack-price">${pack.price}</p>
-          <button class="pack-btn">Offrir ce pack</button>
+          <button class="pack-btn" onclick="addToCart('pack-${pack.id}', '${pack.name}', ${parseInt(pack.price)}, '${pack.price}')">Offrir ce pack</button>
         </div>
       </div>
     `).join('');
@@ -207,4 +498,52 @@ if(packsGrid){
   });
 
   renderPacks();
+}
+
+// ===== LIEN DE MENU ACTIF (sur toutes les pages) =====
+const navLinks = document.querySelectorAll('nav a');
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+navLinks.forEach(link => {
+  const linkPage = link.getAttribute('href').split('/').pop();
+  if(linkPage === currentPage){
+    link.classList.add('active');
+  }
+});
+
+// ===== ANIMATION AU SCROLL (sur toutes les pages) =====
+const revealElements = document.querySelectorAll('.reveal');
+
+if(revealElements.length > 0){
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);   // une fois révélé, on arrête d'observer (pas de re-déclenchement)
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+}
+
+// variante : anime chaque enfant d'une grille avec un léger décalage
+const revealGroups = document.querySelectorAll('.reveal-group');
+
+if(revealGroups.length > 0){
+  const groupObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const children = entry.target.children;
+        Array.from(children).forEach((child, i) => {
+          setTimeout(() => {
+            child.classList.add('visible');
+          }, i * 100);   // 100ms de décalage entre chaque carte
+        });
+        groupObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealGroups.forEach(el => groupObserver.observe(el));
 }
