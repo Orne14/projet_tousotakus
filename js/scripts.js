@@ -547,3 +547,23 @@ if(packsGrid){
 
   renderPacks();
 }
+
+// ===== FORMULAIRE CONTACT (seulement si présent sur la page) =====
+const contactForm = document.getElementById('contactForm');
+if(contactForm){
+  const CONTACT_WHATSAPP_NUMBER = "22900000000"; // remplace par le vrai numéro
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();   // empêche le comportement par défaut (rechargement de page)
+
+    const nom = document.getElementById('cf-nom').value;
+    const prenom = document.getElementById('cf-prenom').value;
+    const tel = document.getElementById('cf-tel').value;
+    const message = document.getElementById('cf-message').value;
+
+    let waMessage = `Bonjour TOUSOTAKUS, je suis ${prenom} ${nom} (tel: ${tel}).%0A%0A${message}`;
+    const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage).replace(/%2520/g, '%20')}`;
+
+    window.open(waLink, '_blank');
+  });
+}
