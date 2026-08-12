@@ -1,3 +1,51 @@
+// ===== LIEN DE MENU ACTIF (sur toutes les pages) =====
+const navLinks = document.querySelectorAll('nav a');
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+navLinks.forEach(link => {
+  const linkPage = link.getAttribute('href').split('/').pop();
+  if(linkPage === currentPage){
+    link.classList.add('active');
+  }
+});
+
+// ===== ANIMATION AU SCROLL (sur toutes les pages) =====
+const revealElements = document.querySelectorAll('.reveal');
+
+if(revealElements.length > 0){
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);   // une fois révélé, on arrête d'observer (pas de re-déclenchement)
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+}
+
+// variante : anime chaque enfant d'une grille avec un léger décalage
+const revealGroups = document.querySelectorAll('.reveal-group');
+
+if(revealGroups.length > 0){
+  const groupObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const children = entry.target.children;
+        Array.from(children).forEach((child, i) => {
+          setTimeout(() => {
+            child.classList.add('visible');
+          }, i * 100);   // 100ms de décalage entre chaque carte
+        });
+        groupObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealGroups.forEach(el => groupObserver.observe(el));
+}
+
 // ===== HERO SLIDER (seulement si présent sur la page) =====
 const slides = document.querySelectorAll('.slide');
 if(slides.length > 0){
@@ -498,52 +546,4 @@ if(packsGrid){
   });
 
   renderPacks();
-}
-
-// ===== LIEN DE MENU ACTIF (sur toutes les pages) =====
-const navLinks = document.querySelectorAll('nav a');
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-
-navLinks.forEach(link => {
-  const linkPage = link.getAttribute('href').split('/').pop();
-  if(linkPage === currentPage){
-    link.classList.add('active');
-  }
-});
-
-// ===== ANIMATION AU SCROLL (sur toutes les pages) =====
-const revealElements = document.querySelectorAll('.reveal');
-
-if(revealElements.length > 0){
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);   // une fois révélé, on arrête d'observer (pas de re-déclenchement)
-      }
-    });
-  }, { threshold: 0.15 });
-
-  revealElements.forEach(el => revealObserver.observe(el));
-}
-
-// variante : anime chaque enfant d'une grille avec un léger décalage
-const revealGroups = document.querySelectorAll('.reveal-group');
-
-if(revealGroups.length > 0){
-  const groupObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        const children = entry.target.children;
-        Array.from(children).forEach((child, i) => {
-          setTimeout(() => {
-            child.classList.add('visible');
-          }, i * 100);   // 100ms de décalage entre chaque carte
-        });
-        groupObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealGroups.forEach(el => groupObserver.observe(el));
 }

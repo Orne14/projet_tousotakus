@@ -1590,3 +1590,278 @@ nav a.active::after{
   opacity:1;
   transform:translateY(0);
 }
+
+/* recit */
+.story-section{
+  background:#0b0b0d;
+  padding:90px 40px;
+}
+
+.story-container{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:60px;
+}
+
+.story-img-wrap{
+  flex:1;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:12px;
+}
+
+.story-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.story-text{
+  flex:1;
+}
+
+.story-tag{
+  font-family:'Space Mono', monospace;
+  color:#c8102e;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:12px;
+}
+
+.story-text h2{
+  font-family:'Anton', sans-serif;
+  color:#f7f3ea;
+  font-size:clamp(28px, 4vw, 42px);
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
+
+.story-text p{
+  color:#c9c3b3;
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:18px;
+}
+
+.story-text p:last-child{
+  margin-bottom:0;
+}
+
+@media(max-width:800px){
+  .story-container{
+    flex-direction:column;
+  }
+}
+
+/* ce qui nous anime */
+.values-section{
+  background:#f7f3ea;
+  padding:90px 40px;
+}
+
+.values-header{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.values-tag{
+  font-family:'Space Mono', monospace;
+  color:#c8102e;
+  font-size:13px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:12px;
+}
+
+.values-header h2{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:clamp(32px, 5vw, 48px);
+  text-transform:uppercase;
+}
+
+.values-grid{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:24px;
+}
+
+.value-card{
+  text-align:center;
+  padding:10px;
+}
+
+.value-icon-wrap{
+  width:64px;
+  height:64px;
+  background:#0b0b0d;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#c8102e;
+  margin:0 auto 20px;
+  transition:background 0.35s ease, transform 0.35s ease;
+}
+
+.value-card:hover .value-icon-wrap{
+  background:#c8102e;
+  color:#f7f3ea;
+  transform:scale(1.08);
+}
+
+.value-card h3{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:18px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+
+.value-card p{
+  color:#5a564c;
+  font-size:14px;
+  line-height:1.6;
+}
+
+@media(max-width:800px){
+  .values-grid{
+    grid-template-columns:repeat(2, 1fr);
+    gap:36px 24px;
+  }
+}
+
+@media(max-width:480px){
+  .values-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* communaute */
+.community-detail-section{
+  background:#f7f3ea;
+  padding:90px 40px;
+}
+
+.community-detail-container{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  align-items:flex-start;
+  gap:60px;
+}
+
+.community-detail-text{
+  flex:1;
+}
+
+.community-detail-text h2{
+  font-family:'Anton', sans-serif;
+  color:#0b0b0d;
+  font-size:clamp(28px, 4vw, 42px);
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+
+.community-detail-text > p{
+  color:#5a564c;
+  font-size:15px;
+  line-height:1.75;
+  margin-bottom:18px;
+}
+
+.community-features{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:26px;
+}
+
+.community-features li{
+  color:#0b0b0d;
+  font-size:14px;
+  font-weight:600;
+}
+
+.senpai-box{
+  background:#0b0b0d;
+  border-left:4px solid #c8102e;
+  border-radius:8px;
+  padding:22px 24px;
+  margin-bottom:22px;
+}
+
+.senpai-box h4{
+  font-family:'Anton', sans-serif;
+  color:#c8102e;
+  font-size:16px;
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  margin-bottom:10px;
+}
+
+.senpai-box p{
+  color:#c9c3b3;
+  font-size:14px;
+  line-height:1.65;
+  margin:0;
+}
+
+.community-features{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:26px;
+}
+
+.community-features li{
+  color:#0b0b0d;
+  font-size:14px;
+  font-weight:600;
+  padding-left:20px;
+  position:relative;
+}
+
+.community-features li::before{
+  content:'';
+  position:absolute;
+  left:0;
+  top:6px;
+  width:8px;
+  height:8px;
+  background:#c8102e;
+  border-radius:2px;      /* léger arrondi, carré adouci plutôt qu'un rond classique */
+}
+
+.community-detail-img-wrap{
+  flex:1;
+  aspect-ratio:4/5;
+  overflow:hidden;
+  border-radius:12px;
+  position:sticky;
+  top:100px;              /* l'image reste visible pendant qu'on lit le texte, plus long ici */
+}
+
+.community-detail-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+@media(max-width:800px){
+  .community-detail-container{
+    flex-direction:column-reverse;
+  }
+  .community-detail-img-wrap{
+    position:static;
+  }
+}
