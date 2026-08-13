@@ -14,7 +14,7 @@
                 <span class="logo-text">TOUSOTAKUS</span>
             </div>
 
-            <nav>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="./index.html">Accueil</a></li>
                     <li><a href="./boutique.html">Boutique</a></li>
@@ -32,8 +32,15 @@
                     </svg>
                     <span class="cart-count">0</span>
                 </button>
-                <a href="#contact" class="cta-btn">Contactez-nous</a>
+                <a href="contact.html" class="cta-btn">Contactez-nous</a>
             </div>
+
+            <!-- bouton hamburger -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <!-- Panier -->
             <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
@@ -74,8 +81,8 @@
             </aside>
 
             <!-- Grille produits -->
-            <div class="boutique-content reveal">
-                <div class="product-grid reveal-group" id="productGrid"></div>
+            <div class="boutique-content">
+                <div class="product-grid" id="productGrid"></div>
 
                 <div class="load-more-wrap reveal-group">
                     <button class="load-more-btn" id="loadMoreBtn">Voir plus</button>
@@ -100,9 +107,9 @@
             <p>Des coffrets prêts à offrir, pensés pour faire plaisir sans se prendre la tête. Chaque pack regroupe plusieurs articles à un prix avantageux.</p>
         </div>
 
-        <div class="packs-grid reveal-group" id="packsGrid"></div>
+        <div class="packs-grid" id="packsGrid"></div>
 
-        <div class="load-more-wrap reveal-group">
+        <div class="load-more-wrap">
             <button class="load-more-btn" id="loadMorePacksBtn">Voir plus</button>
         </div>
     </section>
@@ -155,7 +162,7 @@
     <!--CTA-->
     <section class="final-cta reveal-group">
         <p>Une question avant de commander ?</p>
-        <a href="https://wa.me/22900000000" target="_blank" class="final-cta-btn">Contactez-nous</a>
+        <a href="contact.html" target="_blank" class="final-cta-btn">Contactez-nous</a>
     </section>
 
     <!--footer-->
@@ -179,9 +186,9 @@
 
             <div class="footer-socials reveal-group">
                 <h4>Suivez-nous</h4>
-                <a href="#" target="_blank">TikTok</a>
-                <a href="#" target="_blank">Instagram</a>
-                <a href="#" target="_blank">Facebook</a>
+                <a href="https://www.tiktok.com/@tousotakus" target="_blank">TikTok</a>
+                <a href="https://www.instagram.com/tousotakus" target="_blank">Instagram</a>
+                <a href="https://www.facebook.com/tousotakus" target="_blank">Facebook</a>
                 <a href="https://wa.me/22900000000" target="_blank">WhatsApp</a>
             </div>
         </div>

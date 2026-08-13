@@ -551,7 +551,7 @@ if(packsGrid){
 // ===== FORMULAIRE CONTACT (seulement si présent sur la page) =====
 const contactForm = document.getElementById('contactForm');
 if(contactForm){
-  const CONTACT_WHATSAPP_NUMBER = "22900000000"; // remplace par le vrai numéro
+  const CONTACT_WHATSAPP_NUMBER = "2290192262407"; // remplace par le vrai numéro
 
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();   // empêche le comportement par défaut (rechargement de page)
@@ -561,9 +561,28 @@ if(contactForm){
     const tel = document.getElementById('cf-tel').value;
     const message = document.getElementById('cf-message').value;
 
-    let waMessage = `Bonjour TOUSOTAKUS, je suis ${prenom} ${nom} (tel: ${tel}).%0A%0A${message}`;
+    let waMessage = `Bonjour TOUSOTAKUS, je suis ${prenom} ${nom} (tel: ${tel}).${message}`;
     const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage).replace(/%2520/g, '%20')}`;
 
     window.open(waLink, '_blank');
+  });
+}
+
+// ===== MENU BURGER MOBILE (sur toutes les pages) =====
+const burgerBtn = document.getElementById('burgerBtn');
+const mainNav = document.getElementById('mainNav');
+
+if(burgerBtn && mainNav){
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('open');
+    mainNav.classList.toggle('open');
+  });
+
+  // ferme le menu automatiquement quand on clique sur un lien (utile en navigation mobile)
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burgerBtn.classList.remove('open');
+      mainNav.classList.remove('open');
+    });
   });
 }

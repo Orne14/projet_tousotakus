@@ -105,6 +105,73 @@ nav a:hover::after{
   justify-content:center;
 }
 
+
+/* bouton burger */
+.burger-btn{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:8px;
+  position:relative;
+  z-index:200;              /* AJOUT : reste au-dessus du panneau (150) et du header */
+}
+
+.burger-btn span{
+  width:24px;
+  height:2px;
+  background:#0b0b0d;
+  transition:transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* quand le menu est ouvert, transforme les 3 traits en croix */
+.burger-btn.open span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.burger-btn.open span:nth-child(2){
+  opacity:0;
+}
+.burger-btn.open span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+@media(max-width:860px){
+  nav#mainNav{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100%;
+    width:280px;
+    max-width:80vw;
+    background:#f7f3ea;
+    z-index:150;
+    padding:100px 30px 30px;
+    transform:translateX(100%);   /* caché hors écran par défaut */
+    transition:transform 0.35s ease;
+    box-shadow:-4px 0 20px rgba(11,11,13,0.15);
+  }
+
+  nav#mainNav.open{
+    transform:translateX(0);       /* glisse depuis la droite quand ouvert */
+  }
+
+  nav#mainNav ul{
+    flex-direction:column;
+    gap:24px;
+  }
+
+  .burger-btn{
+    display:flex;                  /* visible seulement sous 860px */
+  }
+
+  .cta-btn{
+    display:none;                  /* cache le bouton Contactez-nous du header en mobile, pour ne pas surcharger — le menu suffit */
+  }
+}
+
 /* panier */
 .overlay{
   position:fixed; inset:0; background:rgba(11,11,13,0.6); z-index:200;
@@ -427,6 +494,12 @@ nav a:hover::after{
 @media(max-width:900px){
   .product-grid{
     grid-template-columns:repeat(2, 1fr);   /* passe à 2 par ligne sur mobile/tablette */
+  }
+}
+
+@media(max-width:420px){
+  .product-grid{
+    grid-template-columns:1fr;   /* une seule colonne sur les écrans très étroits */
   }
 }
 
@@ -1334,7 +1407,7 @@ nav a:hover::after{
 /* promo */
 .promo-banner{
     position:relative;
-    background-image:url('../images/promo-bg.jpg');
+    background-image:url('../images/promo-bg.png');
     background-size:cover;
     background-position:center;
     padding:120px 40px;
@@ -1988,25 +2061,6 @@ nav a.active::after{
   color:#0b0b0d;
   font-size:15px;
   font-weight:600;
-}
-
-.contact-socials{
-  display:flex;
-  gap:20px;
-}
-
-.contact-socials a{
-  color:#5a564c;
-  text-decoration:none;
-  font-size:13px;
-  font-weight:700;
-  text-transform:uppercase;
-  letter-spacing:0.5px;
-  transition:color 0.25s ease;
-}
-
-.contact-socials a:hover{
-  color:#c8102e;
 }
 
 @media(max-width:800px){
