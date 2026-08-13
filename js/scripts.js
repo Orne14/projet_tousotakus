@@ -556,20 +556,22 @@ if(packsGrid){
 // ===== FORMULAIRE CONTACT (seulement si présent sur la page) =====
 const contactForm = document.getElementById('contactForm');
 if(contactForm){
-  const CONTACT_WHATSAPP_NUMBER = "2290192262407"; // remplace par le vrai numéro
+  const CONTACT_EMAIL = "tousotakus.officiel@gmail.com";
 
   contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();   // empêche le comportement par défaut (rechargement de page)
+    e.preventDefault();
 
     const nom = document.getElementById('cf-nom').value;
     const prenom = document.getElementById('cf-prenom').value;
-    const tel = document.getElementById('cf-tel').value;
+    const email = document.getElementById('cf-email').value;
     const message = document.getElementById('cf-message').value;
 
-    let waMessage = `Bonjour TOUSOTAKUS, je suis ${prenom} ${nom} (tel: ${tel}).${message}`;
-    const waLink = `https://wa.me/${CONTACT_WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage).replace(/%2520/g, '%20')}`;
+    const subject = `Nouveau message de ${prenom} ${nom}`;
+    const body = `Nom : ${nom}\nPrénom : ${prenom}\nEmail : ${email}\n\nMessage :\n${message}`;
 
-    window.open(waLink, '_blank');
+    const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailtoLink;
   });
 }
 
