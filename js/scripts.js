@@ -1,6 +1,11 @@
 // ===== LIEN DE MENU ACTIF (sur toutes les pages) =====
 const navLinks = document.querySelectorAll('nav a');
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+let currentPage = window.location.pathname.split('/').pop();
+
+// si l'URL se termine par "/" (page d'accueil sans "index.html" explicite), on force la valeur
+if(currentPage === ''){
+  currentPage = 'index.html';
+}
 
 navLinks.forEach(link => {
   const linkPage = link.getAttribute('href').split('/').pop();
