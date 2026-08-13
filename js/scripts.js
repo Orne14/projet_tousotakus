@@ -83,7 +83,7 @@ if(slides.length > 0){
 }
 
 // ===== PANIER (présent sur toutes les pages) =====
-const WHATSAPP_NUMBER = "22900000000"; // remplace par le vrai numéro
+const WHATSAPP_NUMBER = "2290159809951"; // remplace par le vrai numéro
 
 function getCart(){
   const stored = localStorage.getItem('tousotakus_cart');
@@ -442,7 +442,7 @@ function formatPrice(product){
 
 function buildWhatsAppLink(productName){
   const message = `Bonjour TOUSOTAKUS ! Je suis intéressé(e) par : ${productName}. Est-ce disponible ?`;
-  return `https://wa.me/22900000000?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/2290159809951?text=${encodeURIComponent(message)}`;
 }
 
 function renderProducts(){
