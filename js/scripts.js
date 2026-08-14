@@ -296,7 +296,7 @@ if(grid){
       price:100,
       priceFrom:true,
       unit:"FCFA",
-      category:"vetements",
+      category:"stickers",
       status:"disponible",
       img:"images/produits/stickers2.jpeg",
       desc:"Anime • Style • Personnalisation"
@@ -643,19 +643,10 @@ function renderProducts(){
 const packsGrid = document.getElementById('packsGrid');
 if(packsGrid){
   const allPacks = [
-    {id:1, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
-    {id:2, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
-    {id:3, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
-    {id:4, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
-    {id:5, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
-    {id:6, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
-    {id:7, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
-    {id:8, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
-    {id:9, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
-    {id:10, name:"Pack Découverte", price:"9 500 FCFA", img:"images/pack.jpg", contents:["1 T-shirt otaku", "1 Porte-clés", "1 Pin's collector"]},
-    {id:11, name:"Pack Collector", price:"24 000 FCFA", img:"images/pack.jpg", contents:["1 Figurine premium", "1 T-shirt exclusif", "Goodies surprise"]},
-    {id:12, name:"Pack Duo Fan", price:"14 000 FCFA", img:"images/pack.jpg", contents:["2 T-shirts assortis", "2 Accessoires"]},
-    
+    {id:1, name:"Pack photocards", price:"Prix sur commande", img:"images/packs/photocards1.jpeg", contents:["différentes images"]},
+    {id:2, name:"Pack Collector", price:"Prix sur commande", img:"images/packs/posters5.jpeg", contents:["Posters", "Porte-clés"]},
+    {id:3, name:"Pack cadeau", price:"Prix sur commande", img:"images/packs/posters9.jpeg", contents:["Posters", "Stickers"]},
+  
   ];
 
   const PACKS_INITIAL = 9;
