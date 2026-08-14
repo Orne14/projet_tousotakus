@@ -237,7 +237,7 @@ if(grid){
   const allProducts = [
     {
       id:1,
-      name:"Poster A4 - Demon Slayer",
+      name:"Poster - Demon Slayer",
       price:500,
       priceFrom:false,           // false = prix fixe, true = "à partir de"
       unit:"FCFA",
@@ -248,7 +248,7 @@ if(grid){
     },
     {
       id:2,
-      name:"Poster A4 - groupe K-pop",
+      name:"Poster - groupe K-pop",
       price:500,
       priceFrom:false,
       unit:"FCFA",
