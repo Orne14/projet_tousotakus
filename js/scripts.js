@@ -237,179 +237,312 @@ if(grid){
   const allProducts = [
     {
       id:1,
-      name:"Poster A5",
-      price:250,
+      name:"Poster A4 - Demon Slayer",
+      price:500,
       priceFrom:false,           // false = prix fixe, true = "à partir de"
       unit:"FCFA",
       category:"posters",
       status:"disponible",       // "disponible" | "sur-commande" | "rupture"
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Décoration • Collection"
+      img:"images/produits/posters1.jpeg",
+      desc:"Demon Slayer • Décoration • Édition Collector"
     },
     {
       id:2,
-      name:"Poster A4",
+      name:"Poster A4 - groupe K-pop",
       price:500,
       priceFrom:false,
       unit:"FCFA",
       category:"posters",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Décoration • Collection"
+      img:"images/produits/posters2.jpeg",
+      desc:	"Style K-pop • Édition Fan Art • Collection"
     },
     {
       id:3,
-      name:"Poster A3",
-      price:1000,
+      name:"Photocards Anime",
+      price:null,
       priceFrom:false,
       unit:"FCFA",
-      category:"posters",
+      category:"photocards",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Grand format • Anime • Décoration"
+      img:"images/produits/photocards2.jpeg",
+      desc:"Petit format • Anime • Décoration"
     },
     {
       id:4,
       name:"Photocard Collector",
-      price:100,
+      price:null,
       priceFrom:false,
       unit:"FCFA / unité",
       category:"photocards",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
+      img:"images/produits/photocards3.jpeg",
       desc:"Anime • Collection • Souvenir"
     },
     {
       id:5,
-      name:"Pack de Stickers Anime",
-      price:1000,
+      name:"Autocollants Animé",
+      price:100,
       priceFrom:true,
       unit:"FCFA",
       category:"stickers",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
+      img:"images/produits/stickers1.jpeg",
       desc:"Anime • Fun • Personnalisation"
     },
     {
       id:6,
-      name:"T-shirt Imprimé",
-      price:5500,
+      name:"Autocollants Stickers",
+      price:100,
       priceFrom:true,
       unit:"FCFA",
       category:"vetements",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Style • Streetwear"
+      img:"images/produits/stickers2.jpeg",
+      desc:"Anime • Style • Personnalisation"
     },
     {
       id:7,
-      name:"T-shirt Brodé",
-      price:6000,
-      priceFrom:true,
+      name:"T-shirt Brodé Personnalisé",
+      price:null,              // "Prix sur demande" — dépend du design/complexité
+      priceFrom:false,
       unit:"FCFA",
       category:"vetements",
       status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Broderie • Anime • Qualité"
+      img:"images/produits/vetements4.jpeg",   // une photo exemple, pas LE produit figé
+      desc:"Broderie anime • Design au choix • Personnalisable"
     },
     {
       id:8,
-      name:"Jean InkWear",
-      price:6000,
-      priceFrom:true,
+      name:"Sweat à Capuche Brodé",
+      price:null,
+      priceFrom:false,
       unit:"FCFA",
-      category:"inkwear",
-      status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Collection InkWear • Style TOUSOTAKUS"
+      category:"vetements",
+      status:"disponible",
+      img:"images/produits/vetements1.jpeg",
+      desc:"Hoodie • Broderie anime • Design au choix"
     },
     {
       id:9,
-      name:"Pack de Stickers Anime",
-      price:1000,
-      priceFrom:true,
+      name:"Sweat Col Rond Brodé",
+      price:null,
+      priceFrom:false,
       unit:"FCFA",
-      category:"stickers",
-      status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Fun • Personnalisation"
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements2.jpeg",
+      desc:"Sweat col rond • Broderie anime • Design au choix"
     },
     {
       id:10,
-      name:"T-shirt Imprimé",
-      price:5500,
-      priceFrom:true,
+      name:"Jean InkWear — Itachi Akatsuki",
+      price:15000,
+      priceFrom:false,
       unit:"FCFA",
-      category:"vetements",
-      status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Style • Streetwear"
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produits/jeans11.jpeg",
+      desc:"InkWear • Itachi Akatsuki • Pièce unique"
     },
     {
       id:11,
-      name:"T-shirt Brodé",
-      price:6000,
-      priceFrom:true,
+      name:"Jean InkWear - Équipage One Piece",
+      price:15000,
+      priceFrom:false,
       unit:"FCFA",
-      category:"vetements",
+      category:"inkwear",
       status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Broderie • Anime • Qualité"
+      img:"images/produits/jeans1.jpeg",
+      desc:"InkWear • Équipage One Piece • Pièce unique"
     },
     {
       id:12,
-      name:"Jean InkWear",
-      price:6000,
-      priceFrom:true,
+      name:"Jean InkWear - Itachi denim blanc",
+      price:7000,
+      priceFrom:false,
       unit:"FCFA",
       category:"inkwear",
       status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Collection InkWear • Style TOUSOTAKUS"
+      img:"images/produits/jeans2.jpeg",
+      desc:"InkWear • Itachi Silhouette • Pièce unique"
     },
     {
       id:13,
-      name:"Pack de Stickers Anime",
-      price:1000,
-      priceFrom:true,
+      name:"Porte-clé différentes images",
+      price:1000,              // à confirmer avec ton client, prix pas visible sur les photos
+      priceFrom:false,
       unit:"FCFA",
-      category:"stickers",
+      category:"accessoires",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Fun • Personnalisation"
+      img:"images/produits/accessoires1.jpeg",
+      desc:"Porte-clé Avis de Recherche • One Piece • Accessoire"
     },
     {
       id:14,
-      name:"T-shirt Imprimé",
-      price:5500,
-      priceFrom:true,
+      name:"Porte-clé",
+      price:1500,              // à confirmer avec ton client, prix pas visible sur les photos
+      priceFrom:false,
       unit:"FCFA",
-      category:"vetements",
+      category:"accessoires",
       status:"disponible",
-      img:"images/produit-placeholder.jpg",
-      desc:"Anime • Style • Streetwear"
+      img:"images/produits/accessoires2.jpeg",
+      desc:"Porte-clé Avis de Recherche • Animé • Accessoire"
     },
     {
       id:15,
-      name:"T-shirt Brodé",
-      price:6000,
-      priceFrom:true,
+      name:"Poster - couverture Weekly Jump",
+      price:500,
+      priceFrom:false,
       unit:"FCFA",
-      category:"vetements",
-      status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Broderie • Anime • Qualité"
+      category:"posters",
+      status:"disponible",
+      img:"images/produits/posters3.jpeg",
+      desc:	"Jujutsu Kaisen • Couverture Manga • Collector"
     },
     {
       id:16,
-      name:"Jean InkWear",
-      price:6000,
-      priceFrom:true,
+      name:"Poster - Attack on Titan",
+      price:500,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"posters",
+      status:"disponible",
+      img:"images/produits/posters4.jpeg",
+      desc:		"Attack on Titan • Décoration • Collection"
+    },
+
+    {
+      id:17,
+      name:"Poster - multi-personnages TOUSOTAKUS",
+      price:500,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"posters",
+      status:"disponible",
+      img:"images/produits/posters6.jpeg",
+      desc:	"Collection TOUSOTAKUS • Multi-Anime • Édition Exclusive"
+    },
+    {
+      id:18,
+      name:"Photocard - planches manga",
+      price:null,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"photocards",
+      status:"disponible",
+      img:"images/produits/photocards4.jpeg",
+      desc:	"Photocard Attack on Titan • Finition Mate • Collector"
+    },
+    {
+      id:19,
+      name:"Photocard - plusieurs types",
+      price:null,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"photocards",
+      status:"disponible",
+      img:"images/produits/photocards5.jpeg",
+      desc:	"Photocard Demon Slayer • Nezuko • Finition Mate"
+    },
+    {
+      id:20,
+      name:"T-shirt classique brodé",
+      price:null,              // "Prix sur demande" — dépend du design/complexité
+      priceFrom:false,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements10.jpeg",   // une photo exemple, pas LE produit figé
+      desc:"Broderie anime • Design au choix • Personnalisable"
+    },
+    {
+      id:21,
+      name:"T-shirt classique brodé",
+      price:null,              // "Prix sur demande" — dépend du design/complexité
+      priceFrom:false,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements7.jpeg",   // une photo exemple, pas LE produit figé
+      desc:"T-shirt/Sweat brodé • Design Chainsaw Man • Exemple de réalisation"
+    },
+    {
+      id:22,
+      name:"T-shirt classique brodé - katanas",
+      price:null,              // "Prix sur demande" — dépend du design/complexité
+      priceFrom:false,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements8.jpeg",   // une photo exemple, pas LE produit figé
+      desc:"T-shirt brodé • Design Katanas One Piece • Exemple de réalisation"
+    },
+    {
+      id:23,
+      name:"Sweat Col Rond Brodé",
+      price:null,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements5.jpeg",
+      desc:"Sweat col rond • Broderie anime • Design au choix"
+    },
+    {
+      id:24,
+      name:"Jean InkWear - Naruto short",
+      price:7000,
+      priceFrom:false,
       unit:"FCFA",
       category:"inkwear",
       status:"sur-commande",
-      img:"images/produit-placeholder.jpg",
-      desc:"Collection InkWear • Style TOUSOTAKUS"
+      img:"images/produits/jeans3.jpeg",
+      desc:"InkWear Short • Naruto • Pièce unique"
+    },
+    {
+      id:25,
+      name:"Jean InkWear - Gojo",
+      price:8000,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produits/jeans4.jpeg",
+      desc:"InkWear • Gojo Satoru • Pièce unique"
+    },
+    {
+      id:26,
+      name:"Jean InkWear - 	Trio chibi (Jujutsu Kaisen)",
+      price:6000,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produits/jeans5.jpeg",
+      desc:"InkWear • Trio Chibi JJK • Pièce unique"
+    },
+    {
+      id:27,
+      name:"Jean InkWear - Luffy Wano (One Piece)",
+      price:10000,
+      priceFrom:false,
+      unit:"FCFA",
+      category:"inkwear",
+      status:"sur-commande",
+      img:"images/produits/jeans8.jpeg",
+      desc:"InkWear • Luffy Wano • Pièce unique"
+    },
+    {
+      id:28,
+      name:"T-shirt classique brodé - katanas",
+      price:null,              // "Prix sur demande" — dépend du design/complexité
+      priceFrom:false,
+      unit:"FCFA",
+      category:"vetements",
+      status:"sur-commande",
+      img:"images/produits/vetements9.jpeg",   // une photo exemple, pas LE produit figé
+      desc:"T-shirt brodé • Design Katanas One Piece • Exemple de réalisation"
     },
     
     
@@ -436,6 +569,9 @@ if(grid){
 };
 
 function formatPrice(product){
+  if(product.price === null){
+    return "Prix sur demande";
+  }
   const prefix = product.priceFrom ? "À partir de " : "";
   return `${prefix}${product.price.toLocaleString('fr-FR')} ${product.unit}`;
 }
@@ -449,23 +585,33 @@ function renderProducts(){
   const filtered = getFilteredProducts();
   const toShow = filtered.slice(0, visibleCount);
 
-  grid.innerHTML = toShow.map(p => `
-    <div class="product-card">
-      <div class="product-img-wrap">
-        <img src="${p.img}" alt="${p.name}">
-        <span class="status-badge status-${p.status}">${statusLabels[p.status]}</span>
+  grid.innerHTML = toShow.map(p => {
+    let buttonHtml;
+
+    if(p.status === 'rupture'){
+      buttonHtml = `<button class="buy-btn disabled" disabled>Indisponible</button>`;
+    } else if(p.price === null){
+      const waMessage = encodeURIComponent(`Bonjour TOUSOTAKUS ! Je suis intéressé(e) par : ${p.name}. Quel est le prix ?`);
+      buttonHtml = `<a href="https://wa.me/2290159809951?text=${waMessage}" target="_blank" class="buy-btn">Demander le prix</a>`;
+    } else {
+      buttonHtml = `<button class="buy-btn" onclick="addToCart('product-${p.id}', '${p.name}', ${p.price}, '${formatPrice(p)}')">Achetez Maintenant</button>`;
+    }
+
+    return `
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img src="${p.img}" alt="${p.name}">
+          <span class="status-badge status-${p.status}">${statusLabels[p.status]}</span>
+        </div>
+        <div class="product-info">
+          <h3>${p.name}</h3>
+          <p class="product-price">${formatPrice(p)}</p>
+          <p class="product-desc">${p.desc}</p>
+          ${buttonHtml}
+        </div>
       </div>
-      <div class="product-info">
-        <h3>${p.name}</h3>
-        <p class="product-price">${formatPrice(p)}</p>
-        <p class="product-desc">${p.desc}</p>
-        ${p.status === 'rupture'
-            ? `<button class="buy-btn disabled" disabled>Indisponible</button>`
-            : `<button class="buy-btn" onclick="addToCart('product-${p.id}', '${p.name}', ${p.price}, '${formatPrice(p)}')">Achetez Maintenant</button>`
-          }
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   if(visibleCount >= filtered.length){
     loadMoreBtn.classList.add('hidden');

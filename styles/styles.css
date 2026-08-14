@@ -1432,6 +1432,20 @@ nav a:hover::after{
   background:#d8d3c6;
 }
 
+.buy-btn{
+  background:#c8102e;
+  color:#f7f3ea;
+  border:none;
+  border-radius:30px;
+  padding:11px 20px;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+  text-decoration:none;      /* AJOUT : retire le soulignement par défaut des liens */
+  display:inline-block;      /* AJOUT : nécessaire pour que le padding s'applique bien sur un <a> */
+  transition:padding 0.3s ease, background 0.3s ease;
+}
+
 
 /* promo */
 .promo-banner{
